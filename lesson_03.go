@@ -50,16 +50,20 @@ func getEvents(game *Game) {
 			game.running = false
 			break
 		case *sdl.KeyboardEvent:
-			if e.Keysym.Sym == sdl.K_ESCAPE{
-				game.running = false
-			} else if e.Keysym.Sym == sdl.K_SPACE{
-				if e.Type == 768 { // if keyboard event is keydown
+			if e.Type == sdl.KEYDOWN {
+				switch e.Keysym.Sym {
+				case sdl.K_ESCAPE:
+					game.running = false
+					break
+				case sdl.K_SPACE:
 					game.colored = true
-				} else {
+				}
+			} else if e.Type == sdl.KEYUP {
+				switch e.Keysym.Sym {
+				case sdl.K_SPACE:
 					game.colored = false
 				}
 			}
-			break
 		}
 	}
 }
