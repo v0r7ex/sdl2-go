@@ -51,7 +51,7 @@ func main() {
 	defer renderer.Destroy()
 
 	//Load image
-	imgSurface, err := img.Load("res/adelitas.jpg")
+	imgSurface, err := img.Load("adelitas.jpg")
 	if err != nil {
 		fmt.Printf("Failed to load image: %s\n", img.GetError())
 	}
