@@ -33,6 +33,7 @@ func main() {
 	//Preload image library
 	if img.Init(img.INIT_JPG) != img.INIT_JPG {
 		fmt.Printf("Could not initialize image library: %s\n", img.GetError())
+		return
 	}
 	defer img.Quit()
 
@@ -40,6 +41,7 @@ func main() {
 	window, err := sdl.CreateWindow("SDL2", sdl.WINDOWPOS_CENTERED, sdl.WINDOWPOS_CENTERED, 1024, 576, sdl.WINDOW_RESIZABLE)
 	if err != nil {
 		fmt.Printf("Could not create window: %s\n", sdl.GetError())
+		return
 	}
 	defer window.Destroy()
 
@@ -47,6 +49,7 @@ func main() {
 	renderer, err := sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
 	if err != nil {
 		fmt.Printf("Could not create renderer: %s\n", sdl.GetError())
+		return
 	}
 	defer renderer.Destroy()
 
