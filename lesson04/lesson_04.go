@@ -57,6 +57,7 @@ func main() {
 	imgSurface, err := img.Load("adelitas.jpg")
 	if err != nil {
 		fmt.Printf("Failed to load image: %s\n", img.GetError())
+		return
 	}
 	testImg.width = imgSurface.W
 	testImg.height = imgSurface.H
@@ -65,6 +66,7 @@ func main() {
 	imgTexture, err := renderer.CreateTextureFromSurface(imgSurface)
 	if err != nil {
 		fmt.Printf("Could not create texture: %s\n", sdl.GetError())
+		return
 	}
 	testImg.texture = imgTexture
 	imgSurface.Free()
